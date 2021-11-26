@@ -21,10 +21,15 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/scss/_style.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+  ],
+
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/server.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -34,9 +39,22 @@ export default {
   buildModules: [
   ],
 
+  server: {
+    port: 3000, // デフォルト: 3000
+    host: '0.0.0.0', // デフォルト: localhost
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "@nuxtjs/axios",
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    scss: [
+      '@/assets/scss/_variables.scss' // 読みませたいscssファイルを指定します。
+    ]
+  },
 
   watchers: {
     webpack: {
